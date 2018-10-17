@@ -15,7 +15,7 @@ object Bowling extends App {
         case 1 => {
           ioHandler.printExtraFromSpare
           val roll1: Int = ioHandler.askForInput
-          mainLoop(player.copy(_frames = player.frames :+ Frame(roll1, Some(0))))
+          mainLoop(player.copy(_frames = player.frames :+ Frame(roll1, Util.GUTTER)))
         }
         case 2 => {
           //2 extras because strike
@@ -30,10 +30,10 @@ object Bowling extends App {
             //it is Completed so ask for the next frame and -> add None to the second roll
           ioHandler.printAskForInput(1, player.nbFrames + 1)
             val roll1: Int = ioHandler.askForInput
-            val p: GameState = player.copy(_frames = player.frames :+ Frame(roll1, Some(0)))
+            val p: GameState = player.copy(_frames = player.frames :+ Frame(roll1, Util.GUTTER))
             println(p)
             roll1==10 match {
-              case true => mainLoop(player.copy(_frames = player.frames :+ Frame(roll1, Some(0))))
+              case true => mainLoop(player.copy(_frames = player.frames :+ Frame(roll1, Util.GUTTER)))
               case _ => mainLoop(player.copy(_frames = player.frames :+ Frame(roll1, None)))
             }
           }

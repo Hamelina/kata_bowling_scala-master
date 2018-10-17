@@ -8,6 +8,7 @@ object Util {
   val SPARE = "spare"
   val NOTHING = "nothing"
   val NOTHING_YET = "nothing yet"
+  val GUTTER = Some(0)
 
 
 }

@@ -7,13 +7,13 @@ class BowlingSpec extends FunSpec with Matchers {
 
     it("should be 0 when all roll into gutter => all the rolls equal to 0"){
       //both 1st and 2nd try are equal to 0
-      Frame(0,Some(0)).getScore should be (0)
+      Frame(0,Util.GUTTER).getScore should be (0)
 
     }
 
     it("should be 10 if the first try is 10"){
       //here is the score without bonus
-      Frame(10,Some(0)).getScore should be (10)
+      Frame(10,Util.GUTTER).getScore should be (10)
       Frame(5, Some(5)).getScore should be (10)
 
     }
@@ -22,7 +22,7 @@ class BowlingSpec extends FunSpec with Matchers {
       //it is a Util.SPARE
       Frame(5,Some(5)).getScore should be (10)
       Frame(2,Some(7)).getScore should be (9)
-      Frame(7,Some(0)).getScore should be (7)
+      Frame(7,Util.GUTTER).getScore should be (7)
     }
 
   }
@@ -50,19 +50,19 @@ class BowlingSpec extends FunSpec with Matchers {
   }
 
 
-  val gameState1 = GameState(List(Frame(10,None), Frame(7,Some(0))))
-  val gameStateStrike = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None)))
+  val gameState1 = GameState(List(Frame(10,None), Frame(7,Util.GUTTER)))
+  val gameStateStrike = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None)))
   val gameStateSpare = GameState(List(Frame(10,None), Frame(5,Some(5)), Frame(7,Some(0))))
   val gameStateSpareStrike = GameState(List(Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)), Frame(5,Some(5))))
 
-  val gameNotFinishedYet = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None)))
-  val gameFinishedForGood = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0))))
-  val gameFinishedWithSpare = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(5,Some(5))))
-  val gameFinishedWithStrike = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,None)))
-  val gameFinishedWithSpareAfter1Roll = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(5,Some(5)), Frame(5, None)))
-  val gameFinishedWithStrikeAfter1Roll = GameState(List(Frame(10,None), Frame(7,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10, Some(10))))
-  val gameWon = GameState(List(Frame(10,None), Frame(10,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0))))
-  val gameWonWithFullScore = GameState(List(Frame(10,None), Frame(10,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0)), Frame(10,Some(0)), Frame(10,Some(0))))
+  val gameNotFinishedYet = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None)))
+  val gameFinishedForGood = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER)))
+  val gameFinishedWithSpare = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None), Frame(5,Some(5))))
+  val gameFinishedWithStrike = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,None)))
+  val gameFinishedWithSpareAfter1Roll = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None), Frame(5,Some(5)), Frame(5, None)))
+  val gameFinishedWithStrikeAfter1Roll = GameState(List(Frame(10,None), Frame(7,Util.GUTTER), Frame(10,None), Frame(10,None), Frame(10,None), Frame(7,Util.GUTTER),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10, Some(10))))
+  val gameWon = GameState(List(Frame(10,None), Frame(10,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Util.GUTTER)))
+  val gameWonWithFullScore = GameState(List(Frame(10,None), Frame(10,Some(0)), Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Some(0)),Frame(10,None), Frame(10,None), Frame(10,None), Frame(10,Util.GUTTER), Frame(10,Util.GUTTER), Frame(10,Util.GUTTER)))
 
 
   describe(" Game Sum Bonus "){
