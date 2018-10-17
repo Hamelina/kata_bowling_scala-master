@@ -1,5 +1,11 @@
 package bowling
 
+/**
+  * This class represents a frame.
+  * Note that here for the 10th 
+  * @param _first
+  * @param _second
+  */
 case class Frame(val _first: Int, val _second: Option[Int]) {
 
   /**
