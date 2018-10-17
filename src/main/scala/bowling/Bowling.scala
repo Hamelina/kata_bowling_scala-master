@@ -43,6 +43,7 @@ object Bowling extends App {
           else {
             //either the not yet reached the 10th frame or 10th frame not yet completed
             if(player.frames.isEmpty){
+              //first frame
               ioHandler.printAskForInput(1, player.nbFrames)
               val roll1: Int = ioHandler.askForInput
               roll1==10 match {
@@ -52,11 +53,11 @@ object Bowling extends App {
             }
             else{
               ioHandler.printAskForInput(2, player.nbFrames)
+              val roll2: Option[Int] = Some(ioHandler.askForInput)
+              val newFrame: Frame = player.frames(player.nbFrames).copy(_second = roll2)
+              //val p2: List[Frame] = player.frames.dropRight(1) :+ newFrame
+              mainLoop(player.copy(player.frames.dropRight(1) :+ newFrame))
             }
-            val roll2: Option[Int] = Some(ioHandler.askForInput)
-            val newFrame: Frame = player.frames(player.nbFrames).copy(_second = roll2)
-            //val p2: List[Frame] = player.frames.dropRight(1) :+ newFrame
-            mainLoop(player.copy(player.frames.dropRight(1) :+ newFrame))
           }
         }
       }
