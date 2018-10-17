@@ -1,7 +1,10 @@
 package bowling
 
+import scala.annotation.tailrec
+
 /**
   * This class handles the game
+ *
   * @param _frames The list of the current frame during the game.
   */
 case class GameState(val _frames: List[Frame]) {
